@@ -1,0 +1,60 @@
+# Alembic - Controle de Migrations no Banco de Dados
+
+## O que é o Alembic?
+
+O **Alembic** é uma ferramenta de versionamento de banco de dados para projetos Python que utilizam o SQLAlchemy.  
+Ele permite criar, gerenciar e aplicar **migrations** (scripts que alteram a estrutura do banco de dados de forma controlada e incremental).
+
+Com o Alembic, você consegue:
+
+- Criar novas versões do schema do banco
+- Evoluir ou reverter a estrutura de tabelas, colunas, índices, etc.
+- Manter o histórico de mudanças estruturais do banco
+
+---
+
+## Scripts disponíveis
+
+Este projeto fornece dois scripts principais para facilitar o uso do Alembic:
+
+---
+
+### 📌 1. Criar uma Migration
+
+**Script:** `./scripts/make_migrations.sh`
+
+**Descrição:**  
+Gera um novo arquivo de migration, com base nas alterações detectadas no modelo ou com código manual.
+
+**Como usar:**
+
+```bash
+./scripts/make_migrations.sh -e path-to-.env -n "nome_da_migration" -s "schema_destino"
+```
+
+Parâmetros obrigatórios:
+
+| Parâmetro | Descrição                                                                    |
+| --------- | ---------------------------------------------------------------------------- |
+| `-e`      | Caminho para o arquivo `.env` com as configurações de conexão com o banco    |
+| `-n`      | Nome da migration (ex: `add_users_table`)                                    |
+| `-s`      | Nome do schema onde a migration será aplicada (ex: `public`, `finance`, etc) |
+
+### 📌 2. Aplicar as Migrations
+
+**Script:** `Script: ./scripts/apply_migrations.sh`
+
+**Descrição:**  
+Aplica todas as migrations pendentes ao banco de dados, de acordo com a configuração de ambiente.
+
+**Como usar:**
+
+```bash
+./scripts/apply_migrations.sh -e path-to-.env
+```
+
+Parâmetros obrigatórios:
+
+| Parâmetro | Descrição                                                                    |
+| --------- | ---------------------------------------------------------------------------- |
+| `-e`      | Caminho para o arquivo `.env` com as configurações de conexão com o banco    |
