@@ -25,14 +25,6 @@ class PatientBase(mc.BaseModelNuvie_):
         nullable=False,
         description='Nome completo do paciente.',
     )
-    first_name: Optional[str] = Field(
-        nullable=True,
-        description='Primeiro nome do paciente.',
-    )
-    last_name: Optional[str] = Field(
-        nullable=True,
-        description='Sobrenome do paciente.',
-    )
     gender: Optional[str] = Field(
         nullable=True,
         description='Gênero do paciente (ex: Masculino, Feminino, Não Binário).',
@@ -88,7 +80,75 @@ class PatientBase(mc.BaseModelNuvie_):
 
 
 class PatientCreate(PatientBase):
-    pass
+    birth_date: Optional[datetime] = Field(
+        nullable=False,
+        description='Data de nascimento do paciente.',
+    )
+    death_date: Optional[datetime] = Field(
+        nullable=True,
+        description='Data de falecimento do paciente. Nulo se o paciente estiver vivo.',
+    )
+    SSN: str = Field(
+        nullable=False,
+        unique=True,
+        description='Número de Segurança Social (ou CPF no Brasil) do paciente.',
+    )
+    full_name: Optional[str] = Field(
+        nullable=False,
+        description='Nome completo do paciente.',
+    )
+    gender: Optional[str] = Field(
+        nullable=True,
+        description='Gênero do paciente (ex: Masculino, Feminino, Não Binário).',
+    )
+    self_declared_color: Optional[str] = Field(
+        nullable=True,
+        description='Cor/raça autodeclarada pelo paciente (ex: Branco, Preto, Pardo, Amarelo, Indígena).',
+    )
+    civil_state: Optional[str] = Field(
+        nullable=True,
+        description='Estado civil do paciente (ex: Solteiro, Casado, Divorciado, Viúvo).',
+    )
+    income: Optional[float] = Field(
+        nullable=True,
+        description='Renda mensal ou anual do paciente.',
+    )
+    address: Optional[str] = Field(
+        nullable=True,
+        description='Endereço residencial completo do paciente.',
+    )
+    city: Optional[str] = Field(
+        nullable=True,
+        description='Cidade de residência do paciente.',
+    )
+    state: Optional[str] = Field(
+        nullable=True,
+        description='Estado de residência do paciente.',
+    )
+    zip_code: Optional[str] = Field(
+        nullable=True,
+        description='Código postal (CEP no Brasil) do endereço do paciente.',
+    )
+    phone_number: Optional[str] = Field(
+        nullable=True,
+        description='Número de telefone de contato do paciente.',
+    )
+    email: Optional[str] = Field(
+        nullable=True,
+        description='Endereço de e-mail do paciente.',
+    )
+    weight_kg: Optional[float] = Field(
+        nullable=True,
+        description='Peso do paciente em quilogramas.',
+    )
+    occupation: Optional[str] = Field(
+        nullable=True,
+        description='Profissão ou ocupação atual do paciente.',
+    )
+    healthcare_coverage: Optional[str] = Field(
+        nullable=True,
+        description='Informações sobre a cobertura de plano de saúde do paciente (ex: SUS, Convênio Médico, Nenhum).',
+    )
 
 
 class PatientUpdate(PatientBase):
