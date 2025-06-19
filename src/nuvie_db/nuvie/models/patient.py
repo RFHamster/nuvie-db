@@ -200,11 +200,11 @@ class Patient(PatientBase, table=True):
 
 
 class PatientPublic(PatientBase):
-    id: int
+    id: str
 
 
 class PatientPublicWithDetails(PatientBase):
-    id: int
+    id: str
 
 
 class PatientsPublic(SQLModel):
