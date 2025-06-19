@@ -1,9 +1,8 @@
 from sqlmodel import SQLModel
 
-
-class TokenPayload(BaseModel):
+class TokenPayload(SQLModel):
     sub: int | None = None
 
-class Token(BaseModel):
+class Token(SQLModel):
     access_token: str
     token_type: str = 'bearer'
