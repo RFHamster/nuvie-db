@@ -1,6 +1,6 @@
-import nuvie_db.nuvie.core as mc
+import src.nuvie_db.nuvie.core as mc
 
-from nuvie_db.nuvie import metadata
+from src.nuvie_db.nuvie import metadata
 from sqlmodel import Field, SQLModel
 
 

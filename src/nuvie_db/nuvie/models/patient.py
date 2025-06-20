@@ -1,6 +1,6 @@
-import nuvie_db.nuvie.core as mc
+import src.nuvie_db.nuvie.core as mc
 
-from nuvie_db.nuvie import metadata
+from src.nuvie_db.nuvie import metadata
 from datetime import datetime, date
 from sqlmodel import Field, SQLModel
 from pydantic import computed_field
@@ -56,22 +56,6 @@ class PatientBase(mc.BaseModelNuvie_):
     zip_code: Optional[str] = Field(
         nullable=True,
         description='Código postal (CEP no Brasil) do endereço do paciente.',
-    )
-    phone_number: Optional[str] = Field(
-        nullable=True,
-        description='Número de telefone de contato do paciente.',
-    )
-    email: Optional[str] = Field(
-        nullable=True,
-        description='Endereço de e-mail do paciente.',
-    )
-    weight_kg: Optional[float] = Field(
-        nullable=True,
-        description='Peso do paciente em quilogramas.',
-    )
-    occupation: Optional[str] = Field(
-        nullable=True,
-        description='Profissão ou ocupação atual do paciente.',
     )
     healthcare_coverage: Optional[str] = Field(
         nullable=True,
@@ -129,22 +113,6 @@ class PatientCreate(SQLModel):
         nullable=True,
         description='Código postal (CEP no Brasil) do endereço do paciente.',
     )
-    phone_number: Optional[str] = Field(
-        nullable=True,
-        description='Número de telefone de contato do paciente.',
-    )
-    email: Optional[str] = Field(
-        nullable=True,
-        description='Endereço de e-mail do paciente.',
-    )
-    weight_kg: Optional[float] = Field(
-        nullable=True,
-        description='Peso do paciente em quilogramas.',
-    )
-    occupation: Optional[str] = Field(
-        nullable=True,
-        description='Profissão ou ocupação atual do paciente.',
-    )
     healthcare_coverage: Optional[str] = Field(
         nullable=True,
         description='Informações sobre a cobertura de plano de saúde do paciente (ex: SUS, Convênio Médico, Nenhum).',
@@ -183,7 +151,6 @@ class Patient(PatientBase, table=True):
         dados = {
             'Nome': self.full_name,
             'Idade': self.age,
-            'Peso': self.weight_kg,
             'Gênero': self.gender,
             'Cor/Raça': self.self_declared_color,
         }
