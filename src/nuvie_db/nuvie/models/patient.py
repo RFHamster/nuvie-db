@@ -8,10 +8,6 @@ from typing import Optional
 
 
 class PatientBase(mc.BaseModelNuvie_):
-    tt: Optional[datetime] = Field(
-        nullable=False,
-        description='Data de nascimento do paciente.',
-    )
     birth_date: Optional[datetime] = Field(
         nullable=False,
         description='Data de nascimento do paciente.',
