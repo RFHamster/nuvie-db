@@ -9,7 +9,9 @@ from alembic import context
 
 import sys
 
-sys.path = ['', '..'] + sys.path[1:]
+sys.path.insert(
+    0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src'))
+)
 
 
 from nuvie_db.nuvie import SQLModelNuvie, metadata as nuvie_metadata
@@ -30,6 +32,8 @@ fileConfig(config.config_file_name, disable_existing_loggers=False)
 
 # from nuvie_db.another_schema import SQLModelSchema
 # from nuvie_db.another_schema import metadata as another_schema_metadata
+
+print(SQLModelNuvie.metadata)
 
 schemas_metadata = {
     'nuvie': {
