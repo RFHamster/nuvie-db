@@ -11,12 +11,15 @@ class UserBase(mc.BaseModelNuvie_):
     )
 
 
-class UserCreate(UserBase):
-    pass
+class UserCreate(SQLModel):
+    password: str = Field(nullable=True)
+    user_name: str = Field(
+        nullable=False, description='type of the user, Patient or Doctor'
+    )
 
 
 class UserUpdate(UserBase):
-    pass
+    password: str = Field(nullable=True)
 
 
 class User(UserBase, table=True):
